@@ -17,10 +17,13 @@ class UserController extends Controller
         // 获取给定用户的角色
         $data = User::query()->find($id)->roles;
 
-        // 获取给定用户按角色 ID 排序的角色信息
-        $data = User::query()->find($id)->roles()->orderBy('id')->get();
+        $user = User::query()->find($id);
+        foreach ($user->roles as $role) {
+            // dd($role->userRolePivot->created_at);
+            // dd($role->userRolePivot->user_id);
+        }
 
-        return response()->json($data);
+        return response()->json($user);
     }
 
     public function index(Request $request)
