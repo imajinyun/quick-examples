@@ -42,6 +42,18 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get user status.
+     *
+     * @return string
+     */
+    public function getStatusAttribute(): string
+    {
+        $map = [1 => '正常', 2 => '禁用'];
+
+        return $this->attributes['status'] = $map[(int)$this->attributes['status']];
+    }
+
+    /**
      * Define a one-to-one relationship.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

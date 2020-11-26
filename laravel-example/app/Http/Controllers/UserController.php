@@ -25,20 +25,19 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $data = User::with(['degree' => function ($query) {
-            $query->select(['id', 'user_id', 'school_code', 'school_name']);
-        }])
-        ->simplePaginate();
+        $data = User::query()
+            ->with('degree:user_id,school_code,school_name,major_code,major_name')
+            ->simplePaginate()
+            ->appends('status');
 
         return response()->json($data);
     }
 
     public function show(Request $request, int $id)
     {
-        $data = User::query()->with(['degree' => function ($query) {
-            $query->select(['id', 'user_id', 'school_code', 'school_name']);
-        }])
-        ->find($id);
+        $data = User::query()
+            ->with('degree:user_id,school_code,school_name,major_code,major_name')
+            ->find($id);
 
         return response()->json($data);
     }
