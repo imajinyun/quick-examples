@@ -9,8 +9,16 @@ class UserController extends Controller
 {
     public function test(Request $request)
     {
-        $userId = $request->get('user_id');
-        $data = User::query()->find($userId)->degree;
+        $id = $request->get('id');
+
+        // 获取给定用户的学位信息
+        $data = User::query()->find($id)->degree;
+
+        // 获取给定用户的角色
+        $data = User::query()->find($id)->roles;
+
+        // 获取给定用户按角色 ID 排序的角色信息
+        $data = User::query()->find($id)->roles()->orderBy('id')->get();
 
         return response()->json($data);
     }

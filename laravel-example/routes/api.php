@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleCommentController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDegreeController;
 use Illuminate\Http\Request;
@@ -30,6 +31,10 @@ Route::prefix('user')->group(function () {
     Route::get('degree/test', [UserDegreeController::class, 'test'])->name('user.degree.test');
     Route::get('degree', [UserDegreeController::class, 'index'])->name('user.degree.list');
     Route::get('{id}/degree', [UserDegreeController::class, 'show'])->name('user.degree.show');
+
+    Route::get('role/test', [RoleController::class, 'test'])->name('user.role.test');
+    Route::get('role', [RoleController::class, 'index'])->name('user.role.list');
+    Route::get('{id}/role', [RoleController::class, 'show'])->name('user.role.show');
 });
 
 Route::prefix('article')->group(function () {

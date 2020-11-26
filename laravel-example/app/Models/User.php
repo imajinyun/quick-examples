@@ -60,4 +60,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Article');
     }
+
+    /**
+     * Define a many-to-many relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role', 'user_roles', 'user_id', 'role_id');
+    }
 }
