@@ -7,13 +7,24 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    public function test(Request $request)
+    {
+        $id = $request->get('id');
+        $data = Article::with(['user', 'category', 'comments'])->find($id);
+
+        return response()->json($data);
+    }
+
     public function index(Request $request)
     {
-        $article = Article::with(['comments' => function ($query) {
-            $query->select(['id', 'article_id', 'title']);
+        $article = Article::with(['user' => function ($query) {
+            $query->select(['id', 'name']);
         }])
         ->with(['category' => function ($query) {
             $query->select(['id', 'name']);
+        }])
+        ->with(['comments' => function ($query) {
+            $query->select(['id', 'article_id', 'title']);
         }])
         ->simplePaginate();
 
@@ -22,7 +33,16 @@ class ArticleController extends Controller
 
     public function show(Request $request, int $id)
     {
-        $article = Article::query()->find($id);
+        $article = Article::with(['user' => function ($query) {
+            $query->select(['id', 'name']);
+        }])
+        ->with(['category' => function ($query) {
+            $query->select(['id', 'name']);
+        }])
+        ->with(['comments' => function ($query) {
+            $query->select(['id', 'article_id', 'title']);
+        }])
+        ->find($id);
 
         return response()->json($article);
     }

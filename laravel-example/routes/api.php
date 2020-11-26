@@ -32,6 +32,7 @@ Route::prefix('user')->group(function () {
 });
 
 Route::prefix('article')->group(function () {
+    Route::get('article/test', [ArticleController::class, 'test'])->name('article.test');
     Route::get('article', [ArticleController::class, 'index'])->name('article.list');
     Route::get('{id}/article', [ArticleController::class, 'show'])->name('article.show');
     Route::post('article', [ArticleController::class, 'store'])->name('article.create');
