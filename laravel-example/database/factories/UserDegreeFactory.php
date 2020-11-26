@@ -23,11 +23,8 @@ class UserDegreeFactory extends Factory
     public function definition(): array
     {
         $userIds = User::all()->pluck('id')->toArray();
-        do {
-            $userId = $this->faker->randomElement($userIds);
-        } while (UserDegree::query()->find($userId));
         return [
-            'user_id' => $userId,
+            'user_id' => $this->faker->unique()->randomElement($userIds),
             'school_code' => $this->faker->ean8,
             'school_name' => $this->faker->state,
             'major_code' => $this->faker->ean13,
