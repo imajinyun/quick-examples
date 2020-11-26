@@ -9,6 +9,13 @@ class Article extends Model
 {
     use HasFactory;
 
+    public function getStatusAttribute(): string
+    {
+        $map = [1 => '已发布', 2 => '未发布', 3 => '已下线'];
+
+        return $this->attributes['status'] = $map[$this->attributes['status']];
+    }
+
     /**
      * Define an inverse one-to-one or many relationship.
      *

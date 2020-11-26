@@ -22,17 +22,19 @@ class ArticleCommentController extends Controller
 
     public function index()
     {
-        $data = ArticleComment::with(['article' => function ($query) {
-            $query->select(['id', 'title', 'subtitle']);
-        }])
-        ->simplePaginate();
+        $data = ArticleComment::query()
+            ->with('article:id,title,subtitle')
+            ->simplePaginate();
 
         return response()->json($data);
     }
 
     public function show(Request $request, int $id)
     {
-        $data = ArticleComment::find($id);
+        $data = ArticleComment::query()
+            ->with('article:id,title,subtitle')
+            ->with('user:id,name')
+            ->find($id);
 
         return response()->json($data);
     }

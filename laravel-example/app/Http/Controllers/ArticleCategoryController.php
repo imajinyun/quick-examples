@@ -10,10 +10,10 @@ class ArticleCategoryController extends Controller
     public function test(Request $request)
     {
         $id = $request->get('id');
+
+        // 获取给定分类下的文章
         $data = ArticleCategory::query()
-            ->with(['articles' => function ($query) {
-                $query->select(['id', 'category_id', 'title']);
-            }])
+            ->with('articles:category_id,title,subtitle')
             ->find($id);
 
         return response()->json($data);

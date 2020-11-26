@@ -31,32 +31,23 @@ class ArticleController extends Controller
 
     public function index(Request $request)
     {
-        $article = Article::with(['user' => function ($query) {
-            $query->select(['id', 'name']);
-        }])
-        ->with(['category' => function ($query) {
-            $query->select(['id', 'name']);
-        }])
-        ->with(['comments' => function ($query) {
-            $query->select(['id', 'article_id', 'title']);
-        }])
-        ->simplePaginate();
+        $articles = Article::query()
+            ->with('user:id,name')
+            ->with('category:id,name')
+            ->with('comments:id,article_id,title')
+            ->simplePaginate()
+            ->appends('status');
 
-        return response()->json($article);
+        return response()->json($articles);
     }
 
     public function show(Request $request, int $id)
     {
-        $article = Article::with(['user' => function ($query) {
-            $query->select(['id', 'name']);
-        }])
-        ->with(['category' => function ($query) {
-            $query->select(['id', 'name']);
-        }])
-        ->with(['comments' => function ($query) {
-            $query->select(['id', 'article_id', 'title']);
-        }])
-        ->find($id);
+        $article = Article::query()
+            ->with('user:id,name')
+            ->with('category:id,name')
+            ->with('comments:id,article_id,title')
+            ->find($id);
 
         return response()->json($article);
     }
