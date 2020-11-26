@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
+use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,13 +23,11 @@ class UserRoleFactory extends Factory
      */
     public function definition(): array
     {
-        $roles = [
-            '运营', '测试', '开发', '维护', '教师',
-            '市场', '采购', '行政', '账务', '产品',
-        ];
+        $userIds = User::all()->pluck('id')->toArray();
+        $roleIds = Role::all()->pluck('id')->toArray();
         return [
-            'name' => $this->faker->unique()->randomElement($roles),
-            'description' => $this->faker->sentence(),
+            'user_id' => $this->faker->randomElement($userIds),
+            'role_id' => $this->faker->randomElement($roleIds),
         ];
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserRolesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateUserRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_roles', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id()->comment('主键 ID');
-            $table->unsignedBigInteger('user_id')->comment('用户 ID');
-            $table->unsignedBigInteger('role_id')->comment('角色 ID');
+            $table->string('name')->comment('角色名称');
+            $table->string('description')->comment('角色描述');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE user_roles comment '用户角色表'");
+        DB::statement("ALTER TABLE roles comment '角色表'");
     }
 
     /**
@@ -29,6 +30,6 @@ class CreateUserRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_roles');
+        Schema::dropIfExists('roles');
     }
 }

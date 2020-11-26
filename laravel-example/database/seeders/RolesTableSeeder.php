@@ -2,20 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserRole;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
-class UserRolesTableSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        UserRole::factory()
-            ->times(50)
+        Role::factory()
+            ->times(10)
             ->create();
     }
 }
