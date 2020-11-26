@@ -9,8 +9,13 @@ class ArticleCategory extends Model
 {
     use HasFactory;
 
-    public function article()
+    /**
+     * Define a one-to-many relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
     {
-        return $this->belongsTo('App\Models\Article');
+        return $this->hasMany('App\Models\Article', 'category_id', 'id');
     }
 }

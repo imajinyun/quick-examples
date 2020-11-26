@@ -41,6 +41,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Define a one-to-one relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function degree()
     {
         return $this->hasOne('App\Models\UserDegree', 'user_id', 'id');

@@ -7,27 +7,38 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $article = Article::with(['category' => function ($query) {
+        $article = Article::with(['comments' => function ($query) {
+            $query->select(['id', 'article_id', 'title']);
+        }])
+        ->with(['category' => function ($query) {
             $query->select(['id', 'name']);
         }])
-        ->with(['user' => function ($query) {
-            $query->select(['id', 'name']);
-        }])
-        ->paginate();
+        ->simplePaginate();
+
         return response()->json($article);
     }
 
-    public function show()
+    public function show(Request $request, int $id)
     {
+        $article = Article::query()->find($id);
+
+        return response()->json($article);
     }
 
-    public function create()
+    public function store(Request $request)
     {
+        return response()->json([]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        return response()->json([]);
+    }
+
+    public function destroy(Request $request)
+    {
+        return response()->json([]);
     }
 }
