@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('title')->comment('标题');
             $table->string('subtitle')->comment('副标题');
             $table->text('content')->comment('内容');
+            $table->unsignedTinyInteger('status')->default(2)->comment('状态(1:已发布 2:未发布 3:已下线)');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

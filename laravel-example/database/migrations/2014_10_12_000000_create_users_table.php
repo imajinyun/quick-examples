@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable()->comment('邮箱认证时间');
             $table->string('password')->comment('用户密码');
             $table->rememberToken()->comment('记住令牌');
+            $table->unsignedTinyInteger('status')->default(1)->comment('用户状态(1:正常 2:禁用)');
             $table->timestamps();
         });
         DB::statement("ALTER TABLE users comment '用户表'");

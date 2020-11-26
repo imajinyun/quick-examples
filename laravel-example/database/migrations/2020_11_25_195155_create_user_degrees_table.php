@@ -23,7 +23,7 @@ class CreateUserDegreesTable extends Migration
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE user_degrees comment '用户学校信息表'");
+        DB::statement("ALTER TABLE user_degrees comment '用户学位信息表'");
     }
 
     /**
