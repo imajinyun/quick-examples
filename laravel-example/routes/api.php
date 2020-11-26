@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleCategoryController;
+use App\Http\Controllers\ArticleCommentController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDegreeController;
@@ -42,6 +43,10 @@ Route::prefix('article')->group(function () {
     Route::get('category/test', [ArticleCategoryController::class, 'test'])->name('article.category.test');
     Route::get('category', [ArticleCategoryController::class, 'index'])->name('article.category.list');
     Route::get('{id}/category', [ArticleCategoryController::class, 'show'])->name('article.category.show');
+
+    Route::get('comment/test', [ArticleCommentController::class, 'test'])->name('article.comment.test');
+    Route::get('comment', [ArticleCommentController::class, 'index'])->name('article.comment.list');
+    Route::get('{id}/comment', [ArticleCommentController::class, 'show'])->name('article.comment.show');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
