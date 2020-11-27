@@ -26,6 +26,9 @@ class ArticleController extends Controller
         // 获取给定文章下的给定 ID 评论
         $data = Article::find($id)->comments->where('id', '18')->first();
 
+        // 获取给定文章的图片
+        $data = Article::find($id)->image;
+
         return response()->json($data);
     }
 

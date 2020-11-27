@@ -17,8 +17,14 @@ class Article extends Model
     }
 
     /**
-     * Define an inverse one-to-one or many relationship.
-     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function image()
+    {
+        return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
@@ -27,8 +33,6 @@ class Article extends Model
     }
 
     /**
-     * Define an inverse one-to-one or many relationship.
-     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
@@ -37,8 +41,6 @@ class Article extends Model
     }
 
     /**
-     * Define a one-to-many relationship.
-     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments()

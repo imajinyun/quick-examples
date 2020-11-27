@@ -54,8 +54,14 @@ class User extends Authenticatable
     }
 
     /**
-     * Define a one-to-one relationship.
-     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function image()
+    {
+        return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function degree()
@@ -64,8 +70,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Define a one-to-many relationship.
-     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function articles()
@@ -74,8 +78,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Define a many-to-many relationship.
-     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function roles()
