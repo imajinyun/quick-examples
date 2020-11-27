@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Mechanic;
+use App\Models\Owner;
 use Illuminate\Database\Seeder;
 
-class MechanicsTableSeeder extends Seeder
+class OwnersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,8 @@ class MechanicsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Mechanic::factory()
-            ->times(20)
+        Owner::factory()
+            ->times(50)
             ->create();
     }
 }

@@ -3,9 +3,13 @@
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleCommentController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\MechanicController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDegreeController;
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +56,20 @@ Route::prefix('article')->group(function () {
     Route::get('comment/test', [ArticleCommentController::class, 'test'])->name('article.comment.test');
     Route::get('comment', [ArticleCommentController::class, 'index'])->name('article.comment.list');
     Route::get('{id}/comment', [ArticleCommentController::class, 'show'])->name('article.comment.show');
+});
+
+Route::prefix('hasonethrough')->group(function() {
+    Route::get('mechanic/test', [MechanicController::class, 'test'])->name('mechanic.test');
+    Route::get('mechanic', [MechanicController::class, 'index'])->name('mechanic.list');
+    Route::get('mechanic/{id}', [MechanicController::class, 'show'])->name('mechanic.show');
+
+    Route::get('car/test', [CarController::class, 'test'])->name('car.test');
+    Route::get('car', [CarController::class, 'index'])->name('car.list');
+    Route::get('car/{id}', [CarController::class, 'index'])->name('car.show');
+
+    Route::get('owner/test', [OwnerController::class, 'test'])->name('owner.test');
+    Route::get('owner', [OwnerController::class, 'index'])->name('owner.list');
+    Route::get('owner/{id}', [OwnerController::class, 'show'])->name('owner.show');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

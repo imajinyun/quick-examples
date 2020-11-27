@@ -10,8 +10,6 @@ class Mechanic extends Model
     use HasFactory;
 
     /**
-     * Define a has-one-through relationship.
-     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOneThrough
      */
     public function carOwner()
