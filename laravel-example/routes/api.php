@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleCommentController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\MechanicController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\RoleController;
@@ -52,7 +53,7 @@ Route::prefix('article')->group(function () {
     Route::get('{id}/comment', [ArticleCommentController::class, 'show'])->name('article.comment.show');
 });
 
-Route::prefix('hasonethrough')->group(function() {
+Route::prefix('hasonethrough')->group(function () {
     Route::get('mechanic/test', [MechanicController::class, 'test'])->name('mechanic.test');
     Route::get('mechanic', [MechanicController::class, 'index'])->name('mechanic.list');
     Route::get('mechanic/{id}', [MechanicController::class, 'show'])->name('mechanic.show');
@@ -64,6 +65,10 @@ Route::prefix('hasonethrough')->group(function() {
     Route::get('owner/test', [OwnerController::class, 'test'])->name('owner.test');
     Route::get('owner', [OwnerController::class, 'index'])->name('owner.list');
     Route::get('owner/{id}', [OwnerController::class, 'show'])->name('owner.show');
+});
+
+Route::prefix('hasmanythrough')->group(function () {
+    Route::get('country/test', [CountryController::class, 'test'])->name('country.test');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
