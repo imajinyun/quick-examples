@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -22,7 +23,9 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $countryIds = Country::all()->pluck('id')->toArray();
         return [
+            'country_id' => $this->faker->randomElement($countryIds),
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->e164PhoneNumber,

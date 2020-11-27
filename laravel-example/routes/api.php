@@ -28,9 +28,6 @@ Route::prefix('user')->group(function () {
     Route::get('test', [UserController::class, 'test'])->name('user.test');
     Route::get('user', [UserController::class, 'index'])->name('user.list');
     Route::get('{id}/user', [UserController::class, 'show'])->name('user.show');
-    Route::post('user', [UserController::class, 'store'])->name('user.create');
-    Route::put('user', [UserController::class, 'update'])->name('user.update');
-    Route::delete('user', [UserController::class, 'destroy'])->name('user.destroy');
 
     Route::get('degree/test', [UserDegreeController::class, 'test'])->name('user.degree.test');
     Route::get('degree', [UserDegreeController::class, 'index'])->name('user.degree.list');
@@ -45,9 +42,6 @@ Route::prefix('article')->group(function () {
     Route::get('article/test', [ArticleController::class, 'test'])->name('article.test');
     Route::get('article', [ArticleController::class, 'index'])->name('article.list');
     Route::get('{id}/article', [ArticleController::class, 'show'])->name('article.show');
-    Route::post('article', [ArticleController::class, 'store'])->name('article.create');
-    Route::put('article', [ArticleController::class, 'update'])->name('article.update');
-    Route::delete('{id}/article', [ArticleController::class, 'destroy'])->name('article.delete');
 
     Route::get('category/test', [ArticleCategoryController::class, 'test'])->name('article.category.test');
     Route::get('category', [ArticleCategoryController::class, 'index'])->name('article.category.list');

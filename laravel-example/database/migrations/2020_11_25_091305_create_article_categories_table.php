@@ -16,7 +16,6 @@ class CreateArticleCategoriesTable extends Migration
         Schema::create('article_categories', function (Blueprint $table) {
             $table->id()->comment('主键 ID');
             $table->string('name')->comment('文章分类名称');
-            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
         DB::statement("ALTER TABLE article_categories comment '文章分类表'");

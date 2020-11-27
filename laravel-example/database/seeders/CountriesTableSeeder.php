@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Country;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
+class CountriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +14,7 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()
+        Country::factory()
             ->times(50)
             ->create();
     }

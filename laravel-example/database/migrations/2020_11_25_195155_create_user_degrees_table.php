@@ -20,7 +20,6 @@ class CreateUserDegreesTable extends Migration
             $table->string('school_name')->comment('学校名称');
             $table->string('major_code')->comment('专业代码');
             $table->string('major_name')->comment('专业名称');
-            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
         DB::statement("ALTER TABLE user_degrees comment '用户学位信息表'");

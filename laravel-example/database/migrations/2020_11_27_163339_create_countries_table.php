@@ -4,21 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMechanicsTable extends Migration
+class CreateCountriesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('mechanics', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id()->comment('主键 ID');
             $table->string('name')->comment('名称');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE mechanics comment '修车师表'");
+        DB::statement("ALTER TABLE countries comment '国家表'");
     }
 
     /**
@@ -26,8 +26,8 @@ class CreateMechanicsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('mechanics');
+        Schema::dropIfExists('countries');
     }
 }
