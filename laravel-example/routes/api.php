@@ -10,6 +10,7 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDegreeController;
+use App\Http\Controllers\UserRoleController;
 use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,13 +31,17 @@ Route::prefix('user')->group(function () {
     Route::get('user', [UserController::class, 'index'])->name('user.list');
     Route::get('{id}/user', [UserController::class, 'show'])->name('user.show');
 
-    Route::get('degree/test', [UserDegreeController::class, 'test'])->name('user.degree.test');
-    Route::get('degree', [UserDegreeController::class, 'index'])->name('user.degree.list');
-    Route::get('{id}/degree', [UserDegreeController::class, 'show'])->name('user.degree.show');
+    Route::get('user/degree/test', [UserDegreeController::class, 'test'])->name('user.degree.test');
+    Route::get('uesr/degree', [UserDegreeController::class, 'index'])->name('user.degree.list');
+    Route::get('user/{id}/degree', [UserDegreeController::class, 'show'])->name('user.degree.show');
 
-    Route::get('role/test', [RoleController::class, 'test'])->name('user.role.test');
-    Route::get('role', [RoleController::class, 'index'])->name('user.role.list');
-    Route::get('{id}/role', [RoleController::class, 'show'])->name('user.role.show');
+    Route::get('user/role/test', [UserRoleController::class, 'test'])->name('user.role.test');
+    Route::get('user/role', [UserRoleController::class, 'index'])->name('user.role.list');
+    Route::get('user/{id}/role', [UserRoleController::class, 'show'])->name('user.role.show');
+
+    Route::get('role/test', [RoleController::class, 'test'])->name('role.test');
+    Route::get('role', [RoleController::class, 'index'])->name('role.list');
+    Route::get('{id}/role', [RoleController::class, 'show'])->name('role.show');
 });
 
 Route::prefix('article')->group(function () {
@@ -56,15 +61,15 @@ Route::prefix('article')->group(function () {
 Route::prefix('hasonethrough')->group(function () {
     Route::get('mechanic/test', [MechanicController::class, 'test'])->name('mechanic.test');
     Route::get('mechanic', [MechanicController::class, 'index'])->name('mechanic.list');
-    Route::get('mechanic/{id}', [MechanicController::class, 'show'])->name('mechanic.show');
+    Route::get('{id}mechanic', [MechanicController::class, 'show'])->name('mechanic.show');
 
     Route::get('car/test', [CarController::class, 'test'])->name('car.test');
     Route::get('car', [CarController::class, 'index'])->name('car.list');
-    Route::get('car/{id}', [CarController::class, 'index'])->name('car.show');
+    Route::get('{id}car', [CarController::class, 'index'])->name('car.show');
 
     Route::get('owner/test', [OwnerController::class, 'test'])->name('owner.test');
     Route::get('owner', [OwnerController::class, 'index'])->name('owner.list');
-    Route::get('owner/{id}', [OwnerController::class, 'show'])->name('owner.show');
+    Route::get('{id}/owner', [OwnerController::class, 'show'])->name('owner.show');
 });
 
 Route::prefix('hasmanythrough')->group(function () {

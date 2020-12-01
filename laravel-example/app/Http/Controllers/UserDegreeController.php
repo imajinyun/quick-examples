@@ -9,8 +9,18 @@ class UserDegreeController extends Controller
 {
     public function test(Request $request)
     {
-        $id = $request->get('id');
-        $data = UserDegree::query()->find($id)->user;
+        $userId = $request->get('user_id');
+
+        // 获取给定用户的学位
+        $data = UserDegree::query()
+            ->where('user_id', $userId)
+            ->first();
+
+        // 通过查询用户的学位获取用户
+        $data = UserDegree::query()
+            ->where('user_id', $userId)
+            ->first()
+            ->user;
 
         return response()->json($data);
     }

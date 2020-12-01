@@ -11,19 +11,18 @@ class UserController extends Controller
     {
         $id = $request->get('id');
 
-        // 获取给定用户的学位信息
+        // 获取给定用户的学位
         $data = User::query()->find($id)->degree;
 
         // 获取给定用户的角色
         $data = User::query()->find($id)->roles;
 
-        $user = User::query()->find($id);
-        foreach ($user->roles as $role) {
+        $data = User::query()->find($id);
+        foreach ($data->roles as $role) {
             // dd($role->userRolePivot->created_at);
-            // dd($role->userRolePivot->user_id);
         }
 
-        return response()->json($user);
+        return response()->json($data);
     }
 
     public function index(Request $request)

@@ -9,12 +9,26 @@ class UserRoleController extends Controller
 {
     public function test(Request $request)
     {
-        $id = $request->get('id');
+        $roleId = $request->get('role_id');
 
-        // 获取给定角色的所属用户
+        // 通过角色 ID 获取用户角色表中的角色信息
+        $data = UserRole::query()
+            ->with('role:id,name')
+            ->where('role_id', $roleId)
+            ->get();
+
+        // 通过角色 ID 获取用户角色表中的用户信息
         $data = UserRole::query()
             ->with('user:id,name')
-            ->find($id);
+            ->where('role_id', $roleId)
+            ->get();
+
+        // 通过角色 ID 获取用户角色表中的用户和角色信息
+        $data = UserRole::query()
+            ->with('user:id,name')
+            ->with('role:id,name')
+            ->where('role_id', $roleId)
+            ->get();
 
         return response()->json($data);
     }
