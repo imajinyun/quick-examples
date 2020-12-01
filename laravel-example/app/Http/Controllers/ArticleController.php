@@ -11,20 +11,20 @@ class ArticleController extends Controller
     {
         $id = $request->get('id');
 
-        // 获取给定文章，并处理文章关联的用户、分类、评论
+        // 通过文章 ID 获取文章，关联用户、分类、评论
         $data = Article::with(['user', 'category', 'comments'])->find($id);
 
-        // 获取给定文章的创作者
+        // 通过文章 ID 获取文章的作者
         $data = Article::find($id)->user;
 
-        // 获取给定文章下的所有评论
+        // 通过文章 ID 获取文章的评论
         $data = Article::find($id)->comments;
 
-        // 获取给定文章所属的分类
+        // 通过文章 ID 获取文章所属的分类
         $data = Article::find($id)->category;
 
         // 获取给定文章下的给定 ID 评论
-        $data = Article::find($id)->comments->where('id', '18')->first();
+        $data = Article::find($id)->comments->where('id', 3)->first();
 
         // 获取给定文章的图片
         $data = Article::find($id)->image;
@@ -38,8 +38,7 @@ class ArticleController extends Controller
             ->with('user:id,name')
             ->with('category:id,name')
             ->with('comments:id,article_id,title')
-            ->simplePaginate()
-            ->appends('status');
+            ->simplePaginate();
 
         return response()->json($articles);
     }

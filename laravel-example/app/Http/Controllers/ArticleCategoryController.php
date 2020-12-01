@@ -11,10 +11,8 @@ class ArticleCategoryController extends Controller
     {
         $id = $request->get('id');
 
-        // 获取给定分类下的文章
-        $data = ArticleCategory::query()
-            ->with('articles:category_id,title,subtitle')
-            ->find($id);
+        // 通过文章分类 ID 获取分类，关联文章
+        $data = ArticleCategory::query()->with('articles:category_id,title,subtitle')->find($id);
 
         return response()->json($data);
     }

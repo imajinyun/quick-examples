@@ -11,16 +11,11 @@ class UserDegreeController extends Controller
     {
         $userId = $request->get('user_id');
 
-        // 获取给定用户的学位
-        $data = UserDegree::query()
-            ->where('user_id', $userId)
-            ->first();
+        // 通过用户 ID 获取学位
+        $data = UserDegree::query()->where('user_id', $userId)->first();
 
-        // 通过查询用户的学位获取用户
-        $data = UserDegree::query()
-            ->where('user_id', $userId)
-            ->first()
-            ->user;
+        // 通过用户 ID 获取学位对应的用户
+        $data = UserDegree::query()->where('user_id', $userId)->first()->user;
 
         return response()->json($data);
     }

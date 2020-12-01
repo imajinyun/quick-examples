@@ -31,9 +31,9 @@ Route::prefix('user')->group(function () {
     Route::get('user', [UserController::class, 'index'])->name('user.list');
     Route::get('{id}/user', [UserController::class, 'show'])->name('user.show');
 
-    Route::get('user/degree/test', [UserDegreeController::class, 'test'])->name('user.degree.test');
-    Route::get('uesr/degree', [UserDegreeController::class, 'index'])->name('user.degree.list');
-    Route::get('user/{id}/degree', [UserDegreeController::class, 'show'])->name('user.degree.show');
+    Route::get('degree/test', [UserDegreeController::class, 'test'])->name('user.degree.test');
+    Route::get('degree', [UserDegreeController::class, 'index'])->name('user.degree.list');
+    Route::get('{id}/degree', [UserDegreeController::class, 'show'])->name('user.degree.show');
 
     Route::get('user/role/test', [UserRoleController::class, 'test'])->name('user.role.test');
     Route::get('user/role', [UserRoleController::class, 'index'])->name('user.role.list');
