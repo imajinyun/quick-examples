@@ -11,21 +11,19 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id()->comment('主键 ID');
-            $table->unsignedBigInteger('country_id')->comment('国家 ID');
-            $table->string('name')->comment('用户名');
-            $table->string('email')->unique()->comment('邮箱');
-            $table->string('phone', 20)->unique()->comment('手机');
-            $table->timestamp('email_verified_at')->nullable()->comment('邮箱认证时间');
-            $table->string('password')->comment('用户密码');
-            $table->rememberToken()->comment('记住令牌');
-            $table->unsignedTinyInteger('status')->default(1)->comment('用户状态(1:正常 2:禁用)');
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->text('profile_photo_path')->nullable();
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE users comment '用户表'");
     }
 
     /**
@@ -33,7 +31,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('users');
     }

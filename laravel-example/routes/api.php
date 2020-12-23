@@ -76,6 +76,6 @@ Route::prefix('hasmanythrough')->group(function () {
     Route::get('country/test', [CountryController::class, 'test'])->name('country.test');
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
