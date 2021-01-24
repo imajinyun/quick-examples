@@ -1,0 +1,74 @@
+# gin-admin-example global configuration
+
+# jwt configuration
+jwt:
+  signing-key: "pmTinGst"
+  expires-time: 604800
+  buffer-time: 86400
+
+# zap logger configuration
+zap:
+  level: "info"
+  format: "console"
+  prefix: "[GAE]"
+  director: "log"
+  link-name: "logger"
+  show-line: true
+  encode-level: "LowercaseColorLevelEncoder"
+  log-in-console: true
+
+# redis configuration
+redis:
+  db: 0
+  addr: "127.0.0.1:6379"
+  password: ""
+
+# email configuration
+email:
+  to: "xxx@qq.com"
+  prot: 465
+  from: "xxx@163.com"
+  host: "smtp.163.com"
+  is-ssl: true
+  secret: "xxx"
+  nickname: "test"
+
+# casbin configuration
+system:
+  env: "public"
+  addr: 8888
+  db-type: "mysql"
+  oss-type: "local"
+  use-multipoint: false
+
+# captcha configuration
+captcha:
+  key-long: 6
+  img-width: 240
+  img-height: 80
+
+# mysql configuration
+mysql:
+  path: "127.0.0.1:3306"
+  config: "charset=utf8mb4&parseTime=True&loc=local"
+  db-name: "admin"
+  username: "root"
+  password: ""
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: false
+  log-zap: ""
+
+# local configuration
+local:
+  path: "uploads/file"
+
+# qiniu configuration
+qiniu:
+  zone: ""
+  bucket: ""
+  img-path: ""
+  use-https: false
+  access-key: ""
+  secret-key: ""
+  use-cdn-domains: false
