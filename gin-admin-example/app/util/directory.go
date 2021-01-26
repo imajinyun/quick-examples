@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// PathExists determine if path is exists.
 func PathExists(path string) (bool, error) {
 	_, err := os.Stat(path)
 	if err == nil {
@@ -18,6 +19,7 @@ func PathExists(path string) (bool, error) {
 	return false, err
 }
 
+// CreateDir to create a directory.
 func CreateDir(dirs ...string) (err error) {
 	for _, v := range dirs {
 		exist, err := PathExists(v)

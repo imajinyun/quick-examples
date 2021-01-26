@@ -7,10 +7,11 @@ import (
 	"gin-admin-example/util"
 	"os"
 
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"gopkg.in/fsnotify.v1"
 )
 
+// Viper returns a viper.
 func Viper(path ...string) *viper.Viper {
 	var config string
 	if len(path) == 0 {

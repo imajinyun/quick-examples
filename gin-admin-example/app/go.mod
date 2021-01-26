@@ -3,6 +3,7 @@ module gin-admin-example
 go 1.15
 
 require (
+	github.com/fsnotify/fsnotify v1.4.9
 	github.com/garyburd/redigo v1.6.2 // indirect
 	github.com/onsi/ginkgo v1.14.2 // indirect
 	github.com/onsi/gomega v1.10.4 // indirect

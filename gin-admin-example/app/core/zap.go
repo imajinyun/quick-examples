@@ -13,6 +13,7 @@ import (
 
 var level zapcore.Level
 
+// Zap returns a logger.
 func Zap() (logger *zap.Logger) {
 	if ok, _ := util.PathExists(global.GAE_CONFIG.Zap.Director); !ok {
 		fmt.Printf("create %v directory\n", global.GAE_CONFIG.Zap.Director)
@@ -38,8 +39,14 @@ func Zap() (logger *zap.Logger) {
 		level = zap.InfoLevel
 	}
 	if level == zap.DebugLevel || level == zap.ErrorLevel {
-		logger = zap.New(getEncode)
+		logger = zap.New(getEncoderCore(), zap.AddStacktrace(level))
+	} else {
+		logger = zap.New(getEncoderCore())
 	}
+	if global.GAE_CONFIG.Zap.ShowLine {
+		logger = logger.WithOptions(zap.AddCaller())
+	}
+	return logger
 }
 
 func getEncoderConfig() (config zapcore.EncoderConfig) {
@@ -71,11 +78,11 @@ func getEncoderConfig() (config zapcore.EncoderConfig) {
 	return config
 }
 
-func getEncoder() zipcore.Encoder {
+func getEncoder() zapcore.Encoder {
 	if global.GAE_CONFIG.Zap.Format == "json" {
-		return zipcore.NewJSONEncoder(getEncoderConfig())
+		return zapcore.NewJSONEncoder(getEncoderConfig())
 	}
-	return zipcore.NewColorEncoder(getEncoderConfig())
+	return zapcore.NewConsoleEncoder(getEncoderConfig())
 }
 
 func getEncoderCore() (core zapcore.Core) {

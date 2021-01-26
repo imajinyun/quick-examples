@@ -7,4 +7,5 @@ import (
 
 func main() {
 	global.GAE_VP = core.Viper()
+	// global.GAE_LOG = core.Zap()
 }
