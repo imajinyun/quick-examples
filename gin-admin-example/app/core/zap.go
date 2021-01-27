@@ -94,6 +94,7 @@ func getEncoderCore() (core zapcore.Core) {
 	return zapcore.NewCore(getEncoder(), writer, level)
 }
 
+// CustomTimeEncoder to encode custom time.
 func CustomTimeEncoder(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
 	enc.AppendString(t.Format(global.GAE_CONFIG.Zap.Prefix + "2006/01/02 - 15:04:05.000"))
 }

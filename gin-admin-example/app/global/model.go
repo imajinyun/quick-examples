@@ -6,7 +6,8 @@ import (
 	"gorm.io/gorm"
 )
 
-type GAE_Model struct {
+// GAE_MODEL struct.
+type GAE_MODEL struct {
 	ID        uint `gorm:"primarykey"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
