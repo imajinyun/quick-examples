@@ -13,8 +13,8 @@ type server interface {
 	ListenAndServe() error
 }
 
+// RunWindowsServer to run a server.
 func RunWindowsServer() {
-	println(global.GAE_CONFIG.System.UseMultipoint)
 	if global.GAE_CONFIG.System.UseMultipoint {
 		initialize.Redis()
 	}
