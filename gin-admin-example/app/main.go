@@ -11,4 +11,7 @@ func main() {
 	global.GAE_LOG = core.Zap()
 	global.GAE_DB = initialize.Gorm()
 	initialize.MysqlTables(global.GAE_DB)
+	db, _ := global.GAE_DB.DB()
+	defer db.Close()
+	core.RunWindowsServer()
 }

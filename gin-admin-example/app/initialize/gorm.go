@@ -22,12 +22,13 @@ func Gorm() *gorm.DB {
 	}
 }
 
+// MysqlTables to register all tables.
 func MysqlTables(db *gorm.DB) {
 	err := db.AutoMigrate(
 		model.SysUser{},
-		// model.SysAuthority{},
-		// model.SysApi{},
-		// model.SysBaseMenu{},
+		model.SysAuthority{},
+		model.SysAPI{},
+		model.SysBaseMenu{},
 		// model.SysBaseMenuParameter{},
 		// model.JwtBlacklist{},
 		// model.SysDictionary{},
@@ -44,7 +45,7 @@ func MysqlTables(db *gorm.DB) {
 		// model.WorkflowStartPoint{},
 		// model.WorkflowEndPoint{},
 		// model.WorkflowMove{},
-		// model.ExaWfLeave{},
+		model.ExaWfLeave{},
 	)
 	if err != nil {
 		global.GAE_LOG.Error("register table failed", zap.Any("err", err))
@@ -66,7 +67,7 @@ func GormMysql() *gorm.DB {
 		SkipInitializeWithVersion: false, // 根据版本自动配置
 	}
 	if db, err := gorm.Open(mysql.New(mysqlConfig), gormConfig(m.LogMode)); err != nil {
-		global.GAE_LOG.Error("MySQL启动异常", zap.Any("err", err))
+		global.GAE_LOG.Error("MySQL 启动异常", zap.Any("err", err))
 		os.Exit(0)
 		return nil
 	} else {

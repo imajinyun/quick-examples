@@ -1,0 +1,10 @@
+[GAE]2021/02/02 - 14:48:36.124	[31merror[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:69	MySQL启动异常	{"err": "unknown time zone local"}
+[GAE]2021/02/02 - 14:49:02.000	[31merror[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:69	MySQL启动异常	{"err": "unknown time zone local"}
+[GAE]2021/02/02 - 14:55:03.730	[31merror[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:69	MySQL 启动异常	{"err": "unknown time zone local"}
+[GAE]2021/02/02 - 14:55:13.577	[31merror[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:50	register table failed	{"err": "invalid field found for struct gin-admin-example/model.SysUser's field Authority, need to define a valid foreign key for relations or it need to implement the Valuer/Scanner interface"}
+[GAE]2021/02/02 - 15:06:55.952	[34minfo[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:53	register table success
+[GAE]2021/02/02 - 15:07:21.850	[34minfo[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:53	register table success
+[GAE]2021/02/02 - 15:07:34.547	[34minfo[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:53	register table success
+[GAE]2021/02/02 - 15:09:52.443	[34minfo[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:53	register table success
+[GAE]2021/02/02 - 17:34:05.805	[34minfo[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:53	register table success
+[GAE]2021/02/02 - 17:35:16.978	[34minfo[0m	/Users/tal/Codes/laravel/quick-examples/gin-admin-example/app/initialize/gorm.go:53	register table success

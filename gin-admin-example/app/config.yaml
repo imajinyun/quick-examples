@@ -50,10 +50,10 @@ captcha:
 # mysql configuration
 mysql:
   path: "127.0.0.1:3306"
-  config: "charset=utf8mb4&parseTime=True&loc=local"
-  db-name: "admin"
-  username: "root"
-  password: ""
+  config: "charset=utf8mb4&parseTime=True"
+  db-name: "gogae"
+  username: "develop"
+  password: "12300123"
   max-idle-conns: 10
   max-open-conns: 100
   log-mode: false
