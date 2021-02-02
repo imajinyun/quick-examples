@@ -3,7 +3,7 @@ package model
 import (
 	"gin-admin-example/global"
 
-	uuid "github.com/google/uuid"
+	"github.com/google/uuid"
 )
 
 // SysUser struct.
