@@ -2,16 +2,15 @@ package router
 
 import (
 	v1 "gin-admin-example/api/v1"
+	"gin-admin-example/middleware"
 
 	"github.com/gin-gonic/gin"
 )
 
-// InitBaseRouter func.
-func InitBaseRouter(Router *gin.RouterGroup) (R gin.IRoutes) {
-	BaseRouter := Router.Group("base")
+// InitUserRouter func.
+func InitUserRouter(Router *gin.RouterGroup) {
+	UserRouter := Router.Group("user").Use(middleware.OperationRecord())
 	{
-		BaseRouter.POST("login", v1.Login)
-		BaseRouter.POST("captcha", v1.Captcha)
+		UserRouter.POST("register", v1.Register)
 	}
-	return BaseRouter
 }
